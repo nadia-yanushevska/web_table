@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+<title>Login</title>
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block login %}
+<form method="post">
+	{% csrf_token %}
+	{{form|crispy}}
+	<button type="submit", class="btn">Login</button>
+</form>
+{% endblock %}

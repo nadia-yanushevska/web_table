@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+{% block title %}
+<title>Create a table</title>
+{% endblock %}
+{% block content %}
+	<form method="post" action="/create/">
+		{% csrf_token %}
+		{{form.as_div}}
+		<button type="submit", name = "save", class="btn">Generate</button>
+		<p>Note: If no columns are checked, table will be created with all columns.</p>
+
+		<p>{{message}}
+		{% if label %}
+		<label id="true", class="progress">
+			Ready.
+		</label>
+		{% else %}
+		<label id="false", class="progress">
+			Processing...
+		</label>
+		{% endif %}
+		</p>
+	</form>
+{% endblock %}

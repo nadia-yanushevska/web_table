@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+{% block title %}
+<title>Tables</title>
+{% endblock %}
+{% block content %}
+	<ol>
+		{% for row in table %}
+		<li>
+			<p>
+				 Table 
+				<a href="media/{{row.name}}.csv">
+					{{row.name}}
+				</a>
+			</p>
+		</li>
+		{% endfor %}
+	</ol>
+{% endblock %}

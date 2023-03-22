@@ -1,0 +1,130 @@
+<html>
+<head>
+	<style type="text/css">
+		.sidenav {
+			height: 100%;
+			width: 200px;
+			position: fixed;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			background-color: cornflowerblue;
+			overflow-x: hidden;
+			padding-top: 20px;
+		}
+
+		a {
+			text-decoration: none;
+			color: midnightblue;
+		}
+
+		a:hover{
+			font-size: 19px;
+			text-decoration: underline;
+			color: slateblue;
+		}
+
+		.sidenav a {
+			padding: 6px 8px 6px 16px;
+			font-size: 25px;
+			display: block;
+		}
+
+		.sidenav a:hover {
+			font-size: 25px;
+		}
+
+		.main {
+			margin-left: 300px;
+			margin-top: 55px;
+			width: 500px;
+			font-size: 18px;
+			padding: 15px 12px 5px;
+			background-color: lavender;
+			border: thick double darkblue;
+			border-radius: 10px;
+		}
+
+		body {
+			background-color: cornsilk;
+		} 
+
+		.btn {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 15px;
+			font-size: 15px;
+			background-color: mediumaquamarine;
+			color: white;
+			border: thin solid mediumpurple;
+			border-radius: 5px;
+		}
+
+		label {
+			display: inline-block;
+		    width: 150px;
+		    padding: 5px 1px;
+		}
+
+		.centered {
+			text-align: center;
+			text-decoration: underline;
+		}
+
+		.right {
+			text-align: right;
+			text-decoration: underline;
+			padding: 5em;
+		}
+
+		.progress {
+			display: inline-block;
+			width: 120px;	
+			text-align: center;	
+			border: solid midnightblue 1px;
+			border-radius: 2px;
+		}
+
+		#false {
+			background-color: slateblue;
+			color: aliceblue;
+		}
+
+		#true {
+			background-color: palegreen;
+			color: black;
+		}
+	</style>
+	<div id="title">
+		{% block title %}
+		{% endblock %}
+	</div>
+</head>
+
+<body>
+	<div class="sidenav">
+		<a href="/home">All Tables</a>
+		<a href="/create">Create Table</a>
+	</div>
+
+	<div id="content", name="content", class="main">
+		<div id="login_form", name = "login">
+			{% block login %}
+
+			{% endblock %}		
+		</div>
+		{% if user.is_authenticated %}
+			{% block content %}
+
+			{% endblock %}
+		{% else %}
+			<p class="centered">Login <a href="/login">here</a></p>
+		{% endif %}
+	</div>
+	{% if user.is_authenticated %}
+		<p class="right"><a href="/logout">Logout</a></p>
+	{% endif %}
+</body>
+
+</html>
